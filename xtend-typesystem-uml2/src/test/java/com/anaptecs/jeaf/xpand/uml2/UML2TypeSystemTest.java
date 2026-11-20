@@ -28,7 +28,10 @@ import org.junit.jupiter.api.Test;
  * Tests the UML2 type system incl. UML profiles using the JEAF test model.
  */
 public class UML2TypeSystemTest {
-  private static final String MODEL_DIRECTORY = "target/test-model/xmi/";
+  /**
+   * Directory of the test model. Can be changed to test other exports of the JEAF test model.
+   */
+  private static final String MODEL_DIRECTORY = System.getProperty("jeaf.test.model.directory", "target/test-model/xmi/");
 
   private static final String SLOT = "model";
 
