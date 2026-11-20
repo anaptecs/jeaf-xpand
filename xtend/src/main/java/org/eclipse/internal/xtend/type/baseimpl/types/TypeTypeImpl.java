@@ -168,7 +168,7 @@ public class TypeTypeImpl extends BuiltinBaseType {
                         .getObjectType() }) {
                     @Override
                     public Object evaluateInternal(final Object target, final Object[] params) {
-                        return new Boolean(((Type) target).isInstance(params[0]));
+                        return Boolean.valueOf(((Type) target).isInstance(params[0]));
                     }
                 }, new OperationImpl(this, "isAssignableFrom", getTypeSystem().getBooleanType(), new Type[] { getTypeSystem()
                     .getTypeType() }) {

@@ -29,7 +29,7 @@ public class RealLiteral extends Literal {
 
     @Override
     protected Object evaluateInternal(final ExecutionContext ctx) {
-        return new Double(getLiteralValue().toString());
+        return Double.valueOf(getLiteralValue().toString());
     }
 
     @Override

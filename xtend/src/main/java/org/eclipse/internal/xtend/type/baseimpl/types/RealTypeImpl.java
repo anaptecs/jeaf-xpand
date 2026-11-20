@@ -39,7 +39,7 @@ public class RealTypeImpl extends BuiltinBaseType {
                         if (params[0] == null)
                             return null;
 
-                        return new Double(((Number) target).doubleValue() + ((Number) params[0]).doubleValue());
+                        return Double.valueOf(((Number) target).doubleValue() + ((Number) params[0]).doubleValue());
                     }
                 },
                 new OperationImpl(this, "-", RealTypeImpl.this, new Type[] { RealTypeImpl.this }) {
@@ -48,13 +48,13 @@ public class RealTypeImpl extends BuiltinBaseType {
                         if (params[0] == null)
                             return null;
 
-                        return new Double(((Number) target).doubleValue() - ((Number) params[0]).doubleValue());
+                        return Double.valueOf(((Number) target).doubleValue() - ((Number) params[0]).doubleValue());
                     }
                 },
                 new OperationImpl(this, "-", RealTypeImpl.this, new Type[] {}) {
                     @Override
                     public Object evaluateInternal(final Object target, final Object[] params) {
-                        return new Double(((Number) target).doubleValue() * -1.0d);
+                        return Double.valueOf(((Number) target).doubleValue() * -1.0d);
                     }
                 },
                 new OperationImpl(this, "*", RealTypeImpl.this, new Type[] { RealTypeImpl.this }) {
@@ -63,7 +63,7 @@ public class RealTypeImpl extends BuiltinBaseType {
                         if (params[0] == null)
                             return null;
 
-                        return new Double(((Number) target).doubleValue() * ((Number) params[0]).doubleValue());
+                        return Double.valueOf(((Number) target).doubleValue() * ((Number) params[0]).doubleValue());
                     }
                 },
                 new OperationImpl(this, "/", RealTypeImpl.this, new Type[] { RealTypeImpl.this }) {
@@ -72,7 +72,7 @@ public class RealTypeImpl extends BuiltinBaseType {
                         if (params[0] == null)
                             return null;
 
-                        return new Double(((Number) target).doubleValue() / ((Number) params[0]).doubleValue());
+                        return Double.valueOf(((Number) target).doubleValue() / ((Number) params[0]).doubleValue());
                     }
                 },
                 new OperationImpl(this, "==", getTypeSystem().getBooleanType(), new Type[] { getTypeSystem()
@@ -80,7 +80,7 @@ public class RealTypeImpl extends BuiltinBaseType {
                     @Override
                     public Object evaluateInternal(final Object target, final Object[] params) {
                         if (target == null)
-                            return new Boolean(target == params[0]);
+                            return Boolean.valueOf(target == params[0]);
                         
                         try {
                             return toDouble(target).equals(toDouble(params[0]));
@@ -96,7 +96,7 @@ public class RealTypeImpl extends BuiltinBaseType {
                     @Override
                     public Object evaluateInternal(final Object target, final Object[] params) {
                         if (target == null)
-                            return new Boolean(target != params[0]);
+                            return Boolean.valueOf(target != params[0]);
                         
                         try {
                             return !toDouble(target).equals(toDouble(params[0]));
@@ -114,7 +114,7 @@ public class RealTypeImpl extends BuiltinBaseType {
                             return Boolean.FALSE;
                         if (params[0] == null)
                             return Boolean.FALSE;
-                        return new Boolean(((Comparable<Double>) toDouble(target)).compareTo(toDouble(params[0])) > 0);
+                        return Boolean.valueOf(((Comparable<Double>) toDouble(target)).compareTo(toDouble(params[0])) > 0);
                     }
                 },
                 new OperationImpl(this, ">=", getTypeSystem().getBooleanType(), new Type[] { getTypeSystem()
@@ -125,7 +125,7 @@ public class RealTypeImpl extends BuiltinBaseType {
                             return params[0] == null ? Boolean.TRUE : Boolean.FALSE;
                         if (params[0] == null)
                             return Boolean.FALSE;
-                        return new Boolean(((Comparable<Double>) toDouble(target)).compareTo(toDouble(params[0])) >= 0);
+                        return Boolean.valueOf(((Comparable<Double>) toDouble(target)).compareTo(toDouble(params[0])) >= 0);
                     }
                 },
                 new OperationImpl(this, "<", getTypeSystem().getBooleanType(), new Type[] { getTypeSystem()
@@ -136,7 +136,7 @@ public class RealTypeImpl extends BuiltinBaseType {
                             return Boolean.FALSE;
                         if (params[0] == null)
                             return Boolean.FALSE;
-                        return new Boolean(((Comparable<Double>) toDouble(target)).compareTo(toDouble(params[0])) < 0);
+                        return Boolean.valueOf(((Comparable<Double>) toDouble(target)).compareTo(toDouble(params[0])) < 0);
                     }
                 },
                 new OperationImpl(this, "<=", getTypeSystem().getBooleanType(), new Type[] { getTypeSystem()
@@ -147,7 +147,7 @@ public class RealTypeImpl extends BuiltinBaseType {
                             return params[0] == null ? Boolean.TRUE : Boolean.FALSE;
                         if (params[0] == null)
                             return Boolean.FALSE;
-                        return new Boolean(((Comparable<Double>) toDouble(target)).compareTo(toDouble(params[0])) <= 0);
+                        return Boolean.valueOf(((Comparable<Double>) toDouble(target)).compareTo(toDouble(params[0])) <= 0);
                     }
                 },
                 new OperationImpl(this, "toInteger", getTypeSystem().getIntegerType(), new Type[0]) {
@@ -172,7 +172,7 @@ public class RealTypeImpl extends BuiltinBaseType {
     }
 
     public Object newInstance() {
-        return new Double(1);
+        return Double.valueOf(1);
     }
 
     private Double toDouble(final Object o) {
@@ -191,7 +191,7 @@ public class RealTypeImpl extends BuiltinBaseType {
         if (targetType.isAssignableFrom(Double.class) || targetType.isAssignableFrom(Double.TYPE))
             return l;
         else if (targetType.isAssignableFrom(Float.class) || targetType.isAssignableFrom(Float.TYPE))
-            return new Float(l.doubleValue());
+            return Float.valueOf((float) l.doubleValue());
         else if (targetType.isAssignableFrom(BigDecimal.class))
             return new BigDecimal(l.doubleValue());
         return super.convert(src, targetType);

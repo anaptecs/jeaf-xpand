@@ -89,7 +89,7 @@ public final class IntegerTypeImpl extends BuiltinBaseType {
                     @Override
                     public Object evaluateInternal(final Object target, final Object[] params) {
                         if (target == null)
-                            return new Boolean(target == params[0]);
+                            return Boolean.valueOf(target == params[0]);
                         try {
                         	return toInt(target).equals(toInt(params[0]));
                         }

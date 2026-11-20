@@ -156,7 +156,7 @@ public class CollectionTypeImpl extends BuiltinBaseType implements Parameterized
 					}
 
 					public Object get(final Object target) {
-						return new Long(((Collection<?>) target).size());
+						return Long.valueOf(((Collection<?>) target).size());
 					}
 				},
 
@@ -172,7 +172,7 @@ public class CollectionTypeImpl extends BuiltinBaseType implements Parameterized
 							LOG.warn("isEmpty called with Null argument. Will return true.");
 							return Boolean.TRUE;
 						}
-						return new Boolean(((Collection<?>) target).size() == 0);
+						return Boolean.valueOf(((Collection<?>) target).size() == 0);
 					}
 				},
 

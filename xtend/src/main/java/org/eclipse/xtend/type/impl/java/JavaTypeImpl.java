@@ -105,7 +105,9 @@ public class JavaTypeImpl extends AbstractTypeImpl {
 
     public Object newInstance() {
         try {
-            return clazz.newInstance();
+            return clazz.getDeclaredConstructor().newInstance();
+        } catch (final java.lang.reflect.InvocationTargetException e) {
+            throw new RuntimeException(e.getCause());
         } catch (final Exception e) {
             throw new RuntimeException(e);
         }
