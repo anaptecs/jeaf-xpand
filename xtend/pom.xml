@@ -37,10 +37,5 @@
 			<groupId>com.anaptecs.jeaf.owalibs</groupId>
 			<artifactId>org.eclipse.emf.ecore</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>com.ibm.icu</groupId>
-			<artifactId>icu4j</artifactId>
-			<optional>true</optional>
-		</dependency>
 	</dependencies>
 </project>

@@ -1,0 +1,5 @@
+context JMM::POJO WARNING "Abstract POJO " + name :
+    !isAbstract;
+
+context JMM::JSONDefaultImpl ERROR "Class must be a POJO: " + name :
+    JMM::POJO.isInstance(this);

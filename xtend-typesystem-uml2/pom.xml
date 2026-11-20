@@ -65,5 +65,41 @@
 			<groupId>com.anaptecs.jeaf.owalibs</groupId>
 			<artifactId>org.eclipse.equinox.registry</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.anaptecs.jeaf.owalibs</groupId>
+			<artifactId>org.eclipse.osgi</artifactId>
+		</dependency>
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>${maven-dependency-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>unpack-test-model</id>
+						<phase>generate-test-resources</phase>
+						<goals>
+							<goal>unpack</goal>
+						</goals>
+						<configuration>
+							<!-- UML model and profiles used by the tests -->
+							<artifactItems>
+								<artifactItem>
+									<groupId>com.anaptecs.jeaf.uml</groupId>
+									<artifactId>jeaf-uml-test-model</artifactId>
+									<version>${jeaf-uml-test-model.version}</version>
+									<type>zip</type>
+								</artifactItem>
+							</artifactItems>
+							<!-- Directory where the test model is unpacked to -->
+							<outputDirectory>${project.build.directory}/test-model</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>

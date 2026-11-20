@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library:Library xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:library="http://anaptecs.com/jeaf/xpand/test/library" name="City Library">
+  <books title="Moby Dick" pages="635" genre="NOVEL"/>
+  <books title="Leaves of Grass" pages="95" genre="POETRY"/>
+  <books title="On the Origin of Species" pages="502" genre="SCIENCE"/>
+</library:Library>

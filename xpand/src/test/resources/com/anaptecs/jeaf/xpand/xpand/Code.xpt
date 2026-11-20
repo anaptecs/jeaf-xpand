@@ -1,0 +1,15 @@
+«DEFINE Class FOR String-»
+«FILE this + ".java"-»
+public class «this» {
+  «PROTECT CSTART "// " CEND "" ID this + ".body"»
+  // TODO implement
+  «ENDPROTECT»
+}
+«ENDFILE-»
+«ENDDEFINE»
+
+«DEFINE Readme FOR String-»
+«FILE "README.txt" src-»
+«this»
+«ENDFILE-»
+«ENDDEFINE»

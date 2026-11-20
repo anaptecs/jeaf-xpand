@@ -1,0 +1,4 @@
+«AROUND *::Line FOR String-»
+«targetDef.proceed()-»
+  (advised)
+«ENDAROUND»

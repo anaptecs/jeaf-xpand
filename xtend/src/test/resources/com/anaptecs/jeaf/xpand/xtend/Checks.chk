@@ -1,0 +1,5 @@
+context String ERROR "Name must not be empty" :
+    this.length > 0;
+
+context String if this.length > 0 WARNING "Name should start with an upper case letter: " + this :
+    this.subString(0, 1) == this.subString(0, 1).toUpperCase();
