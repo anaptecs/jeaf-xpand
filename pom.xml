@@ -55,7 +55,10 @@
 		<mwe2.version>2.9.0.201605261059</mwe2.version>
 		<antlr.version>3.2</antlr.version>
 		<commons-logging.version>1.2</commons-logging.version>
-		<icu4j.version>79.1</icu4j.version>
+
+		<!-- Test model and plugin to unpack it -->
+		<jeaf-uml-test-model.version>2.13.1</jeaf-uml-test-model.version>
+		<maven-dependency-plugin.version>3.11.0</maven-dependency-plugin.version>
 
 		<!-- Javadoc of the original Eclipse code doesn't pass doclint. -->
 		<doclint>none</doclint>
@@ -129,11 +132,6 @@
 				<artifactId>commons-logging</artifactId>
 				<version>${commons-logging.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>com.ibm.icu</groupId>
-				<artifactId>icu4j</artifactId>
-				<version>${icu4j.version}</version>
-			</dependency>
 
 			<dependency>
 				<groupId>com.anaptecs.jeaf.owalibs</groupId>
@@ -183,6 +181,11 @@
 			<dependency>
 				<groupId>com.anaptecs.jeaf.owalibs</groupId>
 				<artifactId>org.eclipse.equinox.registry</artifactId>
+				<version>${eclipse.libs.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.anaptecs.jeaf.owalibs</groupId>
+				<artifactId>org.eclipse.osgi</artifactId>
 				<version>${eclipse.libs.version}</version>
 			</dependency>
 			<dependency>

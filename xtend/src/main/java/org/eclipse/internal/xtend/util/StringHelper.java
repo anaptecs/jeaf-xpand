@@ -15,8 +15,8 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
-import com.ibm.icu.text.DateFormat;
-import com.ibm.icu.text.NumberFormat;
+import java.text.DateFormat;
+import java.text.NumberFormat;
 
 /**
  * This class is a collection of helper functions for string handling.

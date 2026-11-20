@@ -106,7 +106,8 @@ public class ProfileMetaModel implements MetaModel {
 			protected Type createNew(final String typeName) {
 				final NamedElement[] profilesAsNE = profiles.toArray(new NamedElement[0]);
 				final NamedElement ele = getNamedElementRec(profilesAsNE, typeName);
-				if (ele != null) {
+				// Names of profiles or packages (e.g. qualifier of JMM::POJO) are no types.
+				if (ele instanceof org.eclipse.uml2.uml.Type) {
 					EClassifier eClassifier = ProfilesUMLUtil.getEClassifier((org.eclipse.uml2.uml.Type)ele);
 					final Type result = getTypeForEClassifier(eClassifier);
 					return result;
