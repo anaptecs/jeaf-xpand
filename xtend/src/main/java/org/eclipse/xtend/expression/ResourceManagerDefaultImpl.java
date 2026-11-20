@@ -53,6 +53,8 @@ public class ResourceManagerDefaultImpl implements ResourceManager {
 		final InputStream in = ResourceLoaderFactory.createResourceLoader().getResourceAsStream(resourceName);
 
 		if (in == null) {
+			// Remember missing resources as they are looked up repeatedly (e.g. template relative names).
+			resources.put(resourceName, null);
 			return null;
 		}
 		Reader reader = createReader(in);

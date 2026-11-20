@@ -49,6 +49,7 @@ import org.eclipse.xtend.expression.ResourceParser;
 import org.eclipse.xtend.expression.TypeSystemImpl;
 import org.eclipse.xtend.expression.Variable;
 import org.eclipse.xtend.expression.VetoableCallback;
+import org.eclipse.xtend.typesystem.MetaModel;
 import org.eclipse.xtend.typesystem.Callable;
 import org.eclipse.xtend.typesystem.Operation;
 import org.eclipse.xtend.typesystem.Type;
@@ -158,12 +159,24 @@ public class XpandExecutionContextImpl extends ExecutionContextImpl implements X
         	callback,
         	extensionsForNameAndTypesCache,
         	extensionsReturnTypeCache);
-        registerMetaModel(new XpandTypesMetaModel(typeSystem));
+        // Clones share the type system, so the meta model has to be registered only once.
+        if (!hasXpandTypesMetaModel(typeSystem)) {
+            registerMetaModel(new XpandTypesMetaModel(typeSystem));
+        }
         registerParser(resourceManager);
         this.output = output;
         this.protectedRegionResolver = protectedRegionResolver;
         this.exceptionHandler = exceptionHandler;
         this.deferredStatements = deferredStatements;
+    }
+
+    private static boolean hasXpandTypesMetaModel(TypeSystemImpl typeSystem) {
+        for (MetaModel metaModel : typeSystem.getMetaModels()) {
+            if (metaModel instanceof XpandTypesMetaModel) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void registerParser(ResourceManager resMgr) {

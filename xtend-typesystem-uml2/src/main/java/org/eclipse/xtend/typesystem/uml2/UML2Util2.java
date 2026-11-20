@@ -18,6 +18,7 @@ import java.util.Map;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.uml2.uml.Element;
@@ -57,6 +58,29 @@ public class UML2Util2 {
 			return p;
 		}
 		return null;
+	}
+
+	/**
+	 * Unloads all cached profiles and clears the cache. Loaded profiles are referenced by the global UML2 cache adapter,
+	 * so they are not garbage collected before they are unloaded.
+	 */
+	public synchronized final static void clearProfileCache() {
+		for (Profile profile : profiles.values()) {
+			Resource resource = profile.eResource();
+			if (resource != null) {
+				ResourceSet resourceSet = resource.getResourceSet();
+				if (resourceSet != null) {
+					for (Resource next : resourceSet.getResources()) {
+						next.unload();
+					}
+					resourceSet.getResources().clear();
+				}
+				else {
+					resource.unload();
+				}
+			}
+		}
+		profiles.clear();
 	}
 
 	/**

@@ -15,8 +15,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.IdentityHashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.logging.Log;
@@ -180,7 +182,7 @@ public class StereotypeType extends AbstractTypeImpl {
                                         Element ele = (Element) target;
                                         List<Stereotype> all = ele.getAppliedStereotypes();
                                         for (Stereotype st : all) {
-                                            if (isStereoTypeAssignable(st, StereotypeType.this.stereoType)) {
+                                            if (isAssignableToThisStereotype(st)) {
 												final Object value = ele.getValue(st, getName());
 
 												// custom datatypes
@@ -253,12 +255,29 @@ public class StereotypeType extends AbstractTypeImpl {
         return false;
     }
 
+	/**
+	 * Results of {@link #isStereoTypeAssignable(Stereotype, Stereotype)} for this stereotype. Comparing qualified names is
+	 * expensive and the number of stereotypes is small.
+	 */
+	private final Map<Stereotype, Boolean> assignableStereotypes = new IdentityHashMap<Stereotype, Boolean>();
+
+	private boolean isAssignableToThisStereotype(Stereotype st) {
+		synchronized (assignableStereotypes) {
+			Boolean result = assignableStereotypes.get(st);
+			if (result == null) {
+				result = isStereoTypeAssignable(st, stereoType);
+				assignableStereotypes.put(st, result);
+			}
+			return result;
+		}
+	}
+
 	public boolean isInstance(Object o) {
         if (o instanceof Element) {
             Element ele = (Element) o;
             List<Stereotype> all = ele.getAppliedStereotypes();
             for (Stereotype st : all) {
-              if(isStereoTypeAssignable(st, StereotypeType.this.stereoType)){
+              if(isAssignableToThisStereotype(st)){
                 return true;
               }
             }

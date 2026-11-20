@@ -92,9 +92,31 @@ public class ExecutionContextImpl implements ExecutionContext {
 	}
 
 	class ExtensionsForNameAndTypeCache extends Cache<Triplet<Resource, String, List<Type>>, Extension> {
+		/**
+		 * Extensions visible in a resource indexed by their name, so that not all extensions have to be checked.
+		 */
+		private final Map<Resource, Map<String, Set<Extension>>> extensionsByName = new HashMap<Resource, Map<String, Set<Extension>>>();
+
 		@Override
 		protected Extension createNew(final Triplet<Resource, String, List<Type>> arg0) {
-			return PolymorphicResolver.getExtension(internalAllExtensions(arg0.getFirst()), arg0.getSecond(), arg0.getThird());
+			Map<String, Set<Extension>> byName = extensionsByName.get(arg0.getFirst());
+			if (byName == null) {
+				byName = new HashMap<String, Set<Extension>>();
+				for (Extension extension : internalAllExtensions(arg0.getFirst())) {
+					Set<Extension> extensions = byName.get(extension.getName());
+					if (extensions == null) {
+						extensions = new HashSet<Extension>(2);
+						byName.put(extension.getName(), extensions);
+					}
+					extensions.add(extension);
+				}
+				extensionsByName.put(arg0.getFirst(), byName);
+			}
+			final Set<Extension> candidates = byName.get(arg0.getSecond());
+			if (candidates == null) {
+				return null;
+			}
+			return PolymorphicResolver.getExtension(candidates, arg0.getSecond(), arg0.getThird());
 		}
 	}
 

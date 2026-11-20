@@ -13,7 +13,9 @@ package org.eclipse.xtend.typesystem.emf;
 import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -174,6 +176,10 @@ public class EClassType extends AbstractTypeImpl {
 			if (!errors) {
 
 				result.add(new OperationImpl(this, op.getName(), t, paramTypes) {
+					/**
+					 * Java methods per implementation class, as looking them up by reflection for every call is expensive.
+					 */
+					private final Map<Class<?>, Method> methods = new ConcurrentHashMap<Class<?>, Method>();
 
 					@Override
 					protected Object evaluateInternal(final Object target, final Object[] params) {
@@ -189,7 +195,11 @@ public class EClassType extends AbstractTypeImpl {
 							params[i] = getParameterTypes().get(i).convert(params[i], paramClasses[i]);
 						}
 						try {
-							final Method m = target.getClass().getMethod(getName(), paramClasses);
+							Method m = methods.get(target.getClass());
+							if (m == null) {
+								m = target.getClass().getMethod(getName(), paramClasses);
+								methods.put(target.getClass(), m);
+							}
 							return m.invoke(target, params);
 						}
 						catch (final Exception e) {
