@@ -66,9 +66,6 @@
 		<antlr.version>3.2</antlr.version>
 		<commons-logging.version>1.2</commons-logging.version>
 
-		<!-- Test model and plugin to unpack it -->
-		<jeaf-uml-test-model.version>2.13.1</jeaf-uml-test-model.version>
-		<maven-dependency-plugin.version>3.11.0</maven-dependency-plugin.version>
 
 		<!-- Javadoc of the original Eclipse code doesn't pass doclint. -->
 		<doclint>none</doclint>
