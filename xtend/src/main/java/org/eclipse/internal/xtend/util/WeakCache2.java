@@ -100,6 +100,6 @@ public class WeakCache2<K, V> {
 	}
 
 	public double getHitRatio() {
-		return new Long(this.hitCount).doubleValue() / this.totalCount;
+		return Long.valueOf(this.hitCount).doubleValue() / this.totalCount;
 	}
 }

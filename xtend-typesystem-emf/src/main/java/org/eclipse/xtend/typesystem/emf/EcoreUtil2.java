@@ -213,7 +213,7 @@ public class EcoreUtil2 {
 		Class<?> clazz;
 		try {
 			clazz = ResourceLoaderFactory.createResourceLoader().loadClass(ePackageDescriptor);
-			final EPackage.Descriptor descriptor = (EPackage.Descriptor) clazz.newInstance();
+			final EPackage.Descriptor descriptor = (EPackage.Descriptor) clazz.getDeclaredConstructor().newInstance();
 			final Field f = clazz.getField("eNS_URI");
 			final String uri = (String) f.get(null);
 			EPackage.Registry.INSTANCE.put(uri, descriptor);

@@ -82,9 +82,11 @@ public class Setup {
 				final Field instanceField = factoryClass.getField("INSTANCE");
 				factoryInstance = instanceField.get(null);
 			} else {
-				factoryInstance = factoryClass.newInstance();
+				factoryInstance = factoryClass.getDeclaredConstructor().newInstance();
 			}
 			Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put(m.getFrom(), factoryInstance);
+		} catch (final java.lang.reflect.InvocationTargetException e) {
+			throw new ConfigurationException(e.getCause());
 		} catch (final Exception e) {
 			throw new ConfigurationException(e);
 		}

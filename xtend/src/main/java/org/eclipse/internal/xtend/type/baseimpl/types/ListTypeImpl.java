@@ -58,7 +58,7 @@ public class ListTypeImpl extends CollectionTypeImpl {
 		}, new OperationImpl(this, "indexOf", getTypeSystem().getIntegerType(), new Type[] { getTypeSystem().getObjectType() }) {
 			@Override
 			public Object evaluateInternal(final Object target, final Object[] params) {
-				return new Long(((List<?>) target).indexOf(params[0]));
+				return Long.valueOf(((List<?>) target).indexOf(params[0]));
 			}
 		}, new OperationImpl(this, "first", getInnerType(), new Type[0]) {
 			@Override

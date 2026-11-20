@@ -46,7 +46,7 @@ public final class BooleanTypeImpl extends BuiltinBaseType {
 			@Override
 			public Object evaluateInternal(final Object target,
 					final Object[] params) {
-				return target == null ? null : new Boolean(!((Boolean) target)
+				return target == null ? null : Boolean.valueOf(!((Boolean) target)
 						.booleanValue());
 			}
 		}

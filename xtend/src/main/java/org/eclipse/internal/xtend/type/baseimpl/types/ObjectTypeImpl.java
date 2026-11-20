@@ -38,17 +38,17 @@ public class ObjectTypeImpl extends BuiltinBaseType {
 			@Override
 			public Object evaluateInternal(final Object target, final Object[] params) {
 				if (target == null) {
-					return new Boolean(target == params[0]);
+					return Boolean.valueOf(target == params[0]);
 				}
-				return new Boolean(target.equals(params[0]));
+				return Boolean.valueOf(target.equals(params[0]));
 			}
 		}, new OperationImpl(this, "!=", getTypeSystem().getBooleanType(), new Type[] { ObjectTypeImpl.this }) {
 			@Override
 			public Object evaluateInternal(final Object target, final Object[] params) {
 				if (target == null) {
-					return new Boolean(target != params[0]);
+					return Boolean.valueOf(target != params[0]);
 				}
-				return new Boolean(!target.equals(params[0]));
+				return Boolean.valueOf(!target.equals(params[0]));
 			}
 		}, new OperationImpl(this, ">", getTypeSystem().getBooleanType(), new Type[] { ObjectTypeImpl.this }) {
 			@Override
@@ -59,7 +59,7 @@ public class ObjectTypeImpl extends BuiltinBaseType {
 				if (params[0] == null) {
 					return Boolean.FALSE;
 				}
-				return new Boolean(((Comparable<Object>) target).compareTo(params[0]) > 0);
+				return Boolean.valueOf(((Comparable<Object>) target).compareTo(params[0]) > 0);
 			}
 		}, new OperationImpl(this, ">=", getTypeSystem().getBooleanType(), new Type[] { ObjectTypeImpl.this }) {
 			@Override
@@ -70,7 +70,7 @@ public class ObjectTypeImpl extends BuiltinBaseType {
 				if (params[0] == null) {
 					return Boolean.FALSE;
 				}
-				return new Boolean(((Comparable<Object>) target).compareTo(params[0]) >= 0);
+				return Boolean.valueOf(((Comparable<Object>) target).compareTo(params[0]) >= 0);
 			}
 		}, new OperationImpl(this, "<", getTypeSystem().getBooleanType(), new Type[] { ObjectTypeImpl.this }) {
 			@Override
@@ -81,7 +81,7 @@ public class ObjectTypeImpl extends BuiltinBaseType {
 				if (params[0] == null) {
 					return Boolean.FALSE;
 				}
-				return new Boolean(((Comparable<Object>) target).compareTo(params[0]) < 0);
+				return Boolean.valueOf(((Comparable<Object>) target).compareTo(params[0]) < 0);
 			}
 		}, new OperationImpl(this, "<=", getTypeSystem().getBooleanType(), new Type[] { ObjectTypeImpl.this }) {
 			@Override
@@ -92,7 +92,7 @@ public class ObjectTypeImpl extends BuiltinBaseType {
 				if (params[0] == null) {
 					return Boolean.FALSE;
 				}
-				return new Boolean(((Comparable<Object>) target).compareTo(params[0]) <= 0);
+				return Boolean.valueOf(((Comparable<Object>) target).compareTo(params[0]) <= 0);
 			}
 		}, new PropertyImpl(this, "metaType", getTypeSystem().getTypeType()) {
 			@Override
@@ -123,13 +123,13 @@ public class ObjectTypeImpl extends BuiltinBaseType {
 			@Override
 			public Object evaluateInternal(final Object target, final Object[] params) {
 				if (target == null) {
-					return params[0] == null ? new Long(0) : new Long(-1);
+					return params[0] == null ? Long.valueOf(0) : Long.valueOf(-1);
 				}
 				if (params[0] == null) {
-					return new Long(1);
+					return Long.valueOf(1);
 				}
 				if (target instanceof Comparable) {
-					return new Long(((Comparable<Object>) target).compareTo(params[0]));
+					return Long.valueOf(((Comparable<Object>) target).compareTo(params[0]));
 				}
 				final TypeSystem ts = getTypeSystem();
 				Operation op = ts.findOperation("toString", target, null);
@@ -137,7 +137,7 @@ public class ObjectTypeImpl extends BuiltinBaseType {
 				op = ts.findOperation("toString", params[0], null);
 				final String s2 = (String) op.evaluate(params[0], null);
 
-				return new Long(s1.compareTo(s2));
+				return Long.valueOf(s1.compareTo(s2));
 			}
 		} };
 	}

@@ -22,11 +22,11 @@ public class XpandIterator {
     }
 
     public Long counter() {
-        return new Long(counter);
+        return Long.valueOf(counter);
     }
 
     public Long elements() {
-        return new Long(elementCount);
+        return Long.valueOf(elementCount);
     }
 
     public void increment() {
@@ -42,7 +42,7 @@ public class XpandIterator {
     }
 
     public Long counter1() {
-        return new Long(counter + 1);
+        return Long.valueOf(counter + 1);
     }
 
     // getters for useful features to avoid special case treatment

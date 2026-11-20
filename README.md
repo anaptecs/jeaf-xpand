@@ -18,7 +18,8 @@ Package names are the ones of Eclipse Xpand, so existing templates, extensions a
 
 ## Differences to Eclipse Xpand 2.2.0
 
-- Sources and resources are taken unchanged from the source and binary bundles of the Eclipse Xpand 2.2.0 update site.
+- Sources and resources are taken from the source and binary bundles of the Eclipse Xpand 2.2.0 update site.
+- Java APIs that are deprecated for removal are replaced (e.g. `new Long(...)` by `Long.valueOf(...)`, `Class.newInstance()` by `getDeclaredConstructor().newInstance()`). Behavior is unchanged.
 - Built with Maven as plain JAR files (Java 17) instead of OSGi bundles. Eclipse signatures and OSGi manifests are not included.
 - Only the runtime is contained. Editors for Eclipse are available on the [Eclipse Xpand update site](https://download.eclipse.org/modeling/m2t/xpand/updates/releases/).
 

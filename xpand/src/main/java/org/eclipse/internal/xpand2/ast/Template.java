@@ -100,7 +100,7 @@ public class Template extends SyntaxElement implements XpandResource {
     Collections.sort(l, new Comparator<SyntaxElement>() {
 
       public int compare(final SyntaxElement o1, final SyntaxElement o2) {
-        return new Integer(o1.getStart()).compareTo(o2.getStart());
+        return Integer.valueOf(o1.getStart()).compareTo(o2.getStart());
       }
     });
     return l.toArray(new AbstractDefinition[l.size()]);

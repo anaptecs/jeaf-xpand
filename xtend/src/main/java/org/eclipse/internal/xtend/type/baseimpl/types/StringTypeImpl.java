@@ -57,7 +57,7 @@ public class StringTypeImpl extends BuiltinBaseType {
 					}
 
 					public Object get(final Object target) {
-						return new Long(target.toString().length());
+						return Long.valueOf(target.toString().length());
 					}
 				},
 
@@ -86,7 +86,7 @@ public class StringTypeImpl extends BuiltinBaseType {
 					@Override
 					public Object evaluateInternal(final Object target, final Object[] params) {
 						final String token = (String) params[0];
-						return new Boolean(target.toString().startsWith(token));
+						return Boolean.valueOf(target.toString().startsWith(token));
 					}
 				},
 				new OperationImpl(this, "contains", getTypeSystem().getBooleanType(), new Type[] { getTypeSystem()
@@ -100,7 +100,7 @@ public class StringTypeImpl extends BuiltinBaseType {
 					@Override
 					public Object evaluateInternal(final Object target, final Object[] params) {
 						final String token = (String) params[0];
-						return new Boolean(target.toString().indexOf(token) >= 0);
+						return Boolean.valueOf(target.toString().indexOf(token) >= 0);
 					}
 				},
 				new OperationImpl(this, "endsWith", getTypeSystem().getBooleanType(), new Type[] { getTypeSystem()
@@ -114,7 +114,7 @@ public class StringTypeImpl extends BuiltinBaseType {
 					@Override
 					public Object evaluateInternal(final Object target, final Object[] params) {
 						final String token = (String) params[0];
-						return new Boolean(target.toString().endsWith(token));
+						return Boolean.valueOf(target.toString().endsWith(token));
 					}
 				},
 				new OperationImpl(this, "subString", getTypeSystem().getStringType(), new Type[] {
@@ -323,7 +323,7 @@ public class StringTypeImpl extends BuiltinBaseType {
 			return s;
 		} else if (Character.class.equals(targetType) || Character.TYPE.equals(targetType)) {
 			if (s.length() == 1) {
-				return new Character(s.charAt(0));
+				return Character.valueOf(s.charAt(0));
 			}
 		} else if (StringBuffer.class.equals(targetType)) {
 			return new StringBuffer(s);

@@ -77,7 +77,7 @@ public class JavaExtensionStatement extends AbstractExtension {
 			if (Modifier.isStatic(method.getModifiers())) {
 				return method.invoke(null, parameters);
 			}
-			Object instance = method.getDeclaringClass().newInstance();
+			Object instance = method.getDeclaringClass().getDeclaredConstructor().newInstance();
 			if (IExecutionContextAware.class.isAssignableFrom(method.getDeclaringClass())) {
 				((IExecutionContextAware) instance).setExecutionContext(ctx);
 			}

@@ -29,7 +29,7 @@ public class BooleanLiteral extends Literal {
 
 	@Override
 	public Object evaluateInternal(final ExecutionContext ctx) {
-		return new Boolean(getLiteralValue().toString());
+		return Boolean.valueOf(getLiteralValue().toString());
 	}
 
 	@Override
