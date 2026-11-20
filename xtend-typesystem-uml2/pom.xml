@@ -43,23 +43,23 @@
 		</dependency>
 		<dependency>
 			<groupId>com.anaptecs.jeaf.uml2libs</groupId>
-			<artifactId>org.eclipse.uml2.common</artifactId>
+			<artifactId>uml2-common</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.anaptecs.jeaf.uml2libs</groupId>
-			<artifactId>org.eclipse.uml2.uml</artifactId>
+			<artifactId>uml2-uml</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.anaptecs.jeaf.uml2libs</groupId>
-			<artifactId>org.eclipse.uml2.uml.resources</artifactId>
+			<artifactId>uml2-uml-resources</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.anaptecs.jeaf.uml2libs</groupId>
-			<artifactId>org.eclipse.uml2.types</artifactId>
+			<artifactId>uml2-types</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.anaptecs.jeaf.uml2libs</groupId>
-			<artifactId>org.eclipse.uml2.uml.profile.standard</artifactId>
+			<artifactId>uml2-uml-profile-standard</artifactId>
 		</dependency>
 	</dependencies>
 

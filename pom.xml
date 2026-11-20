@@ -54,11 +54,8 @@
 		<emf.ecore.version>2.43.0</emf.ecore.version>
 		<emf.ecore.xmi.version>2.41.0</emf.ecore.xmi.version>
 		<emf.ecore2xml.version>2.14.0</emf.ecore2xml.version>
-		<!-- UML2 (from Eclipse release repository, not available on Maven Central) -->
-		<uml2.version>5.6.0</uml2.version>
-		<uml2.common.version>2.6.0</uml2.common.version>
-		<uml2.types.version>2.6.0</uml2.types.version>
-		<uml2.profile.standard.version>1.6.0</uml2.profile.standard.version>
+		<!-- UML2 (not available on Maven Central, built by jeaf-uml2libs) -->
+		<uml2libs.version>5.6.1-SNAPSHOT</uml2libs.version>
 		<!-- Eclipse platform, only needed for optional features -->
 		<eclipse.core.runtime.version>3.34.0</eclipse.core.runtime.version>
 		<eclipse.equinox.registry.version>3.12.500</eclipse.equinox.registry.version>
@@ -168,28 +165,28 @@
 			</dependency>
 			<dependency>
 				<groupId>com.anaptecs.jeaf.uml2libs</groupId>
-				<artifactId>org.eclipse.uml2.common</artifactId>
-				<version>${uml2.common.version}</version>
+				<artifactId>uml2-common</artifactId>
+				<version>${uml2libs.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.anaptecs.jeaf.uml2libs</groupId>
-				<artifactId>org.eclipse.uml2.uml</artifactId>
-				<version>${uml2.version}</version>
+				<artifactId>uml2-uml</artifactId>
+				<version>${uml2libs.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.anaptecs.jeaf.uml2libs</groupId>
-				<artifactId>org.eclipse.uml2.uml.resources</artifactId>
-				<version>${uml2.version}</version>
+				<artifactId>uml2-uml-resources</artifactId>
+				<version>${uml2libs.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.anaptecs.jeaf.uml2libs</groupId>
-				<artifactId>org.eclipse.uml2.types</artifactId>
-				<version>${uml2.types.version}</version>
+				<artifactId>uml2-types</artifactId>
+				<version>${uml2libs.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.anaptecs.jeaf.uml2libs</groupId>
-				<artifactId>org.eclipse.uml2.uml.profile.standard</artifactId>
-				<version>${uml2.profile.standard.version}</version>
+				<artifactId>uml2-uml-profile-standard</artifactId>
+				<version>${uml2libs.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.eclipse.platform</groupId>
