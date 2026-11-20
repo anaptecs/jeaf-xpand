@@ -16,6 +16,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.IdentityHashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -184,6 +185,8 @@ public class ProfileMetaModel implements MetaModel {
 
 	private Map<Pair<String, Type>, StereotypeType> stereoTypesWithUmlType = null;
 
+	private final Map<List<Type>, MultipleStereotypeType> multipleStereotypeTypes = new HashMap<List<Type>, MultipleStereotypeType>();
+
 	/**
 	 * Reloads this meta model by cleaning all cached and stereotype information and re-initializing them with the given
 	 * profiles.
@@ -194,6 +197,7 @@ public class ProfileMetaModel implements MetaModel {
 		this.profiles = profiles;
 		this.stereoTypes = null;
 		this.stereoTypesWithUmlType = null;
+		this.multipleStereotypeTypes.clear();
 		init();
 	}
 
@@ -259,8 +263,21 @@ public class ProfileMetaModel implements MetaModel {
 		return result.toString();
 	}
 
+	/**
+	 * Full names of types. Calculating qualified names and normalizing them is expensive and stereotypes are looked up for
+	 * every model element.
+	 */
+	private final Map<org.eclipse.uml2.uml.Type, String> fullNames = new IdentityHashMap<org.eclipse.uml2.uml.Type, String>();
+
 	public String getFullName(final org.eclipse.uml2.uml.Type type) {
-		return normalizedName(type.getQualifiedName());
+		synchronized (fullNames) {
+			String fullName = fullNames.get(type);
+			if (fullName == null) {
+				fullName = normalizedName(type.getQualifiedName());
+				fullNames.put(type, fullName);
+			}
+			return fullName;
+		}
 	}
 
 	public Type getTypeForName(final String typeName) {
@@ -351,7 +368,15 @@ public class ProfileMetaModel implements MetaModel {
 					// MultipleStereotypeType instance
 					// containing all applied stereotypes
 				default:
-					return new MultipleStereotypeType(getTypeSystem(), types, umlType);
+					// Reuse instances as their features and super types are calculated lazily.
+					List<Type> key = new ArrayList<Type>(types);
+					key.add(umlType);
+					MultipleStereotypeType multipleType = multipleStereotypeTypes.get(key);
+					if (multipleType == null) {
+						multipleType = new MultipleStereotypeType(getTypeSystem(), types, umlType);
+						multipleStereotypeTypes.put(key, multipleType);
+					}
+					return multipleType;
 			}
 		} else {
 			return umlType;

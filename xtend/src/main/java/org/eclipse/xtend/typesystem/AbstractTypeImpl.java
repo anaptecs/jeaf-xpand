@@ -11,7 +11,10 @@ package org.eclipse.xtend.typesystem;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.IdentityHashMap;
+import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.logging.Log;
@@ -62,15 +65,40 @@ public abstract class AbstractTypeImpl implements Type {
 		return allFeatures;
 	}
 
+	private Map<String, Set<Callable>> allFeaturesByName = null;
+
+	/**
+	 * Returns all features with the passed name. Features are resolved by name first, so they are indexed to avoid scanning
+	 * all features of a type.
+	 */
+	private Set<Callable> getAllFeatures(final String name) {
+		synchronized (this) {
+			if (allFeaturesByName == null) {
+				Map<String, Set<Callable>> index = new HashMap<String, Set<Callable>>();
+				for (Callable feature : getAllFeatures()) {
+					Set<Callable> features = index.get(feature.getName());
+					if (features == null) {
+						features = new HashSet<Callable>(2);
+						index.put(feature.getName(), features);
+					}
+					features.add(feature);
+				}
+				allFeaturesByName = index;
+			}
+		}
+		Set<Callable> features = allFeaturesByName.get(name);
+		return features != null ? features : Collections.<Callable> emptySet();
+	}
+
 	public StaticProperty getStaticProperty(final String name) {
-		return PolymorphicResolver.getStaticProperty(getAllFeatures(), name, this);
+		return PolymorphicResolver.getStaticProperty(getAllFeatures(name), name, this);
 	}
 
 	private final Cache<String, Property> propertyCache = new Cache<String, Property>() {
 
 		@Override
 		protected Property createNew(final String name) {
-			return PolymorphicResolver.getProperty(getAllFeatures(), name, AbstractTypeImpl.this);
+			return PolymorphicResolver.getProperty(getAllFeatures(name), name, AbstractTypeImpl.this);
 		}
 	};
 
@@ -160,7 +188,7 @@ public abstract class AbstractTypeImpl implements Type {
 
 		@Override
 		protected Operation createNew(final Signature signature) {
-			return PolymorphicResolver.getOperation(getAllFeatures(), signature.name, AbstractTypeImpl.this, Arrays.asList(signature.parameterTypes));
+			return PolymorphicResolver.getOperation(getAllFeatures(signature.name), signature.name, AbstractTypeImpl.this, Arrays.asList(signature.parameterTypes));
 		}
 	};
 
@@ -214,8 +242,27 @@ public abstract class AbstractTypeImpl implements Type {
 		if (t.equals(getTypeSystem().getVoidType())) {
 			return true;
 		}
-		return internalIsAssignableFrom(t);
+		Boolean result;
+		synchronized (this) {
+			if (assignableFromCache == null) {
+				assignableFromCache = new IdentityHashMap<Type, Boolean>();
+			}
+			result = assignableFromCache.get(t);
+		}
+		// Calculated outside of the lock as other types are called recursively.
+		if (result == null) {
+			result = internalIsAssignableFrom(t);
+			synchronized (this) {
+				assignableFromCache.put(t, result);
+			}
+		}
+		return result;
 	}
+
+	/**
+	 * Results of {@link #internalIsAssignableFrom(Type)}. Identity based as types with equal names may have different super types.
+	 */
+	private Map<Type, Boolean> assignableFromCache = null;
 
 	protected boolean internalIsAssignableFrom(final Type t) {
 		for (Type type : t.getSuperTypes()) {

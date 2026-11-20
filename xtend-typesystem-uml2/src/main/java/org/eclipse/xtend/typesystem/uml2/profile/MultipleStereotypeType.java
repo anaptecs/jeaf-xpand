@@ -61,11 +61,16 @@ public final class MultipleStereotypeType extends StereotypeType {
 		return features.toArray(new Feature[stereotypes.size()]);
 	}
 
+	private Set<Type> superTypes;
+
 	@Override
 	public Set<Type> getSuperTypes() {
-		Set<Type> superTypes = new HashSet<Type>();
-		for (StereotypeType st : stereotypes) {
-			superTypes.addAll(st.getSuperTypes());
+		if (superTypes == null) {
+			Set<Type> result = new HashSet<Type>();
+			for (StereotypeType st : stereotypes) {
+				result.addAll(st.getSuperTypes());
+			}
+			superTypes = result;
 		}
 		return superTypes;
 	}
