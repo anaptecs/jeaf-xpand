@@ -8,18 +8,14 @@
 		<version>3.0.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>org.eclipse.xtend.util.stdlib</artifactId>
-	<name>JEAF Xpand - Standard Library</name>
-	<description>Standard library for Xpand / Xtend (based on Eclipse Xtend 2.2.0).</description>
+	<artifactId>org-eclipse-xtend-typesystem-emf</artifactId>
+	<name>JEAF Xpand - EMF Type System</name>
+	<description>EMF type system for Xpand / Xtend (based on Eclipse Xtend 2.2.0).</description>
 
 	<dependencies>
 		<dependency>
 			<groupId>com.anaptecs.jeaf.xpand</groupId>
-			<artifactId>org.eclipse.xpand</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.anaptecs.jeaf.xpand</groupId>
-			<artifactId>org.eclipse.xtend</artifactId>
+			<artifactId>org-eclipse-xtend</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.emf</groupId>
@@ -44,6 +40,21 @@
 		<dependency>
 			<groupId>com.anaptecs.jeaf.owalibs</groupId>
 			<artifactId>org.eclipse.emf.ecore.xmi</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.anaptecs.jeaf.owalibs</groupId>
+			<artifactId>org.eclipse.core.runtime</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>com.anaptecs.jeaf.owalibs</groupId>
+			<artifactId>org.eclipse.equinox.common</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>com.anaptecs.jeaf.owalibs</groupId>
+			<artifactId>org.eclipse.equinox.registry</artifactId>
+			<optional>true</optional>
 		</dependency>
 	</dependencies>
 </project>

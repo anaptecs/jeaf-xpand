@@ -8,22 +8,26 @@
 		<version>3.0.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>org.eclipse.xtend</artifactId>
-	<name>JEAF Xpand - Xtend</name>
-	<description>Expression language, Xtend and Check (based on Eclipse Xtend 2.2.0).</description>
+	<artifactId>org-eclipse-xtend-util-stdlib</artifactId>
+	<name>JEAF Xpand - Standard Library</name>
+	<description>Standard library for Xpand / Xtend (based on Eclipse Xtend 2.2.0).</description>
 
 	<dependencies>
+		<dependency>
+			<groupId>com.anaptecs.jeaf.xpand</groupId>
+			<artifactId>org-eclipse-xpand</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.anaptecs.jeaf.xpand</groupId>
+			<artifactId>org-eclipse-xtend</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.eclipse.emf</groupId>
 			<artifactId>org.eclipse.emf.mwe.core</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.emf</groupId>
-			<artifactId>org.eclipse.emf.mwe2.runtime</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.antlr</groupId>
-			<artifactId>antlr-runtime</artifactId>
+			<artifactId>org.eclipse.emf.mwe.utils</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>commons-logging</groupId>
@@ -38,9 +42,8 @@
 			<artifactId>org.eclipse.emf.ecore</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.ibm.icu</groupId>
-			<artifactId>icu4j</artifactId>
-			<optional>true</optional>
+			<groupId>com.anaptecs.jeaf.owalibs</groupId>
+			<artifactId>org.eclipse.emf.ecore.xmi</artifactId>
 		</dependency>
 	</dependencies>
 </project>

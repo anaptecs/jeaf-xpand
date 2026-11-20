@@ -41,11 +41,11 @@
 	</distributionManagement>
 
 	<modules>
-		<module>org.eclipse.xtend</module>
-		<module>org.eclipse.xpand</module>
-		<module>org.eclipse.xtend.typesystem.emf</module>
-		<module>org.eclipse.xtend.typesystem.uml2</module>
-		<module>org.eclipse.xtend.util.stdlib</module>
+		<module>org-eclipse-xtend</module>
+		<module>org-eclipse-xpand</module>
+		<module>org-eclipse-xtend-typesystem-emf</module>
+		<module>org-eclipse-xtend-typesystem-uml2</module>
+		<module>org-eclipse-xtend-util-stdlib</module>
 	</modules>
 
 	<properties>
@@ -65,17 +65,17 @@
 		<dependencies>
 			<dependency>
 				<groupId>com.anaptecs.jeaf.xpand</groupId>
-				<artifactId>org.eclipse.xtend</artifactId>
+				<artifactId>org-eclipse-xtend</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.anaptecs.jeaf.xpand</groupId>
-				<artifactId>org.eclipse.xpand</artifactId>
+				<artifactId>org-eclipse-xpand</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.anaptecs.jeaf.xpand</groupId>
-				<artifactId>org.eclipse.xtend.typesystem.emf</artifactId>
+				<artifactId>org-eclipse-xtend-typesystem-emf</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 
