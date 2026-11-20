@@ -30,44 +30,36 @@
 			<artifactId>commons-logging</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.anaptecs.jeaf.owalibs</groupId>
+			<groupId>org.eclipse.emf</groupId>
 			<artifactId>org.eclipse.emf.common</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.anaptecs.jeaf.owalibs</groupId>
+			<groupId>org.eclipse.emf</groupId>
 			<artifactId>org.eclipse.emf.ecore</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.anaptecs.jeaf.owalibs</groupId>
+			<groupId>org.eclipse.emf</groupId>
 			<artifactId>org.eclipse.emf.mapping.ecore2xml</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.anaptecs.jeaf.owalibs</groupId>
-			<artifactId>org.eclipse.uml2.common</artifactId>
+			<groupId>com.anaptecs.jeaf.uml2libs</groupId>
+			<artifactId>uml2-common</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.anaptecs.jeaf.owalibs</groupId>
-			<artifactId>org.eclipse.uml2.uml</artifactId>
+			<groupId>com.anaptecs.jeaf.uml2libs</groupId>
+			<artifactId>uml2-uml</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.anaptecs.jeaf.owalibs</groupId>
-			<artifactId>org.eclipse.uml2.uml.resources</artifactId>
+			<groupId>com.anaptecs.jeaf.uml2libs</groupId>
+			<artifactId>uml2-uml-resources</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.anaptecs.jeaf.owalibs</groupId>
-			<artifactId>org.eclipse.core.runtime</artifactId>
+			<groupId>com.anaptecs.jeaf.uml2libs</groupId>
+			<artifactId>uml2-types</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.anaptecs.jeaf.owalibs</groupId>
-			<artifactId>org.eclipse.equinox.common</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.anaptecs.jeaf.owalibs</groupId>
-			<artifactId>org.eclipse.equinox.registry</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.anaptecs.jeaf.owalibs</groupId>
-			<artifactId>org.eclipse.osgi</artifactId>
+			<groupId>com.anaptecs.jeaf.uml2libs</groupId>
+			<artifactId>uml2-uml-profile-standard</artifactId>
 		</dependency>
 	</dependencies>
 

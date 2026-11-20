@@ -49,8 +49,18 @@
 	</modules>
 
 	<properties>
-		<!-- Eclipse libraries (EMF, UML2, ...) as redistributed with openArchitectureWare 4.3.1 -->
-		<eclipse.libs.version>4.3.1</eclipse.libs.version>
+		<!-- EMF (Maven Central) -->
+		<emf.common.version>2.46.0</emf.common.version>
+		<emf.ecore.version>2.43.0</emf.ecore.version>
+		<emf.ecore.xmi.version>2.41.0</emf.ecore.xmi.version>
+		<emf.ecore2xml.version>2.14.0</emf.ecore2xml.version>
+		<!-- UML2 (not available on Maven Central, built by jeaf-uml2libs) -->
+		<uml2libs.version>5.6.1-SNAPSHOT</uml2libs.version>
+		<!-- Eclipse platform, only needed for optional features -->
+		<eclipse.core.runtime.version>3.34.0</eclipse.core.runtime.version>
+		<eclipse.equinox.registry.version>3.12.500</eclipse.equinox.registry.version>
+		<eclipse.jdt.core.version>3.43.0</eclipse.jdt.core.version>
+		<eclipse.text.version>3.14.400</eclipse.text.version>
 		<mwe.version>1.3.20.201605261059</mwe.version>
 		<mwe2.version>2.9.0.201605261059</mwe2.version>
 		<antlr.version>3.2</antlr.version>
@@ -134,74 +144,69 @@
 			</dependency>
 
 			<dependency>
-				<groupId>com.anaptecs.jeaf.owalibs</groupId>
+				<groupId>org.eclipse.emf</groupId>
 				<artifactId>org.eclipse.emf.common</artifactId>
-				<version>${eclipse.libs.version}</version>
+				<version>${emf.common.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.anaptecs.jeaf.owalibs</groupId>
+				<groupId>org.eclipse.emf</groupId>
 				<artifactId>org.eclipse.emf.ecore</artifactId>
-				<version>${eclipse.libs.version}</version>
+				<version>${emf.ecore.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.anaptecs.jeaf.owalibs</groupId>
+				<groupId>org.eclipse.emf</groupId>
 				<artifactId>org.eclipse.emf.ecore.xmi</artifactId>
-				<version>${eclipse.libs.version}</version>
+				<version>${emf.ecore.xmi.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.anaptecs.jeaf.owalibs</groupId>
+				<groupId>org.eclipse.emf</groupId>
 				<artifactId>org.eclipse.emf.mapping.ecore2xml</artifactId>
-				<version>${eclipse.libs.version}</version>
+				<version>${emf.ecore2xml.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.anaptecs.jeaf.owalibs</groupId>
-				<artifactId>org.eclipse.uml2.common</artifactId>
-				<version>${eclipse.libs.version}</version>
+				<groupId>com.anaptecs.jeaf.uml2libs</groupId>
+				<artifactId>uml2-common</artifactId>
+				<version>${uml2libs.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.anaptecs.jeaf.owalibs</groupId>
-				<artifactId>org.eclipse.uml2.uml</artifactId>
-				<version>${eclipse.libs.version}</version>
+				<groupId>com.anaptecs.jeaf.uml2libs</groupId>
+				<artifactId>uml2-uml</artifactId>
+				<version>${uml2libs.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.anaptecs.jeaf.owalibs</groupId>
-				<artifactId>org.eclipse.uml2.uml.resources</artifactId>
-				<version>${eclipse.libs.version}</version>
+				<groupId>com.anaptecs.jeaf.uml2libs</groupId>
+				<artifactId>uml2-uml-resources</artifactId>
+				<version>${uml2libs.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.anaptecs.jeaf.owalibs</groupId>
+				<groupId>com.anaptecs.jeaf.uml2libs</groupId>
+				<artifactId>uml2-types</artifactId>
+				<version>${uml2libs.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.anaptecs.jeaf.uml2libs</groupId>
+				<artifactId>uml2-uml-profile-standard</artifactId>
+				<version>${uml2libs.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.platform</groupId>
 				<artifactId>org.eclipse.core.runtime</artifactId>
-				<version>${eclipse.libs.version}</version>
+				<version>${eclipse.core.runtime.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.anaptecs.jeaf.owalibs</groupId>
-				<artifactId>org.eclipse.equinox.common</artifactId>
-				<version>${eclipse.libs.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.anaptecs.jeaf.owalibs</groupId>
+				<groupId>org.eclipse.platform</groupId>
 				<artifactId>org.eclipse.equinox.registry</artifactId>
-				<version>${eclipse.libs.version}</version>
+				<version>${eclipse.equinox.registry.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.anaptecs.jeaf.owalibs</groupId>
-				<artifactId>org.eclipse.osgi</artifactId>
-				<version>${eclipse.libs.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.anaptecs.jeaf.owalibs</groupId>
+				<groupId>org.eclipse.jdt</groupId>
 				<artifactId>org.eclipse.jdt.core</artifactId>
-				<version>${eclipse.libs.version}</version>
+				<version>${eclipse.jdt.core.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.anaptecs.jeaf.owalibs</groupId>
-				<artifactId>org.eclipse.jface.text</artifactId>
-				<version>${eclipse.libs.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.anaptecs.jeaf.owalibs</groupId>
+				<groupId>org.eclipse.platform</groupId>
 				<artifactId>org.eclipse.text</artifactId>
-				<version>${eclipse.libs.version}</version>
+				<version>${eclipse.text.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
