@@ -8,18 +8,18 @@
 		<version>3.0.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>org-eclipse-xpand</artifactId>
-	<name>JEAF Xpand - Xpand</name>
-	<description>Template language Xpand (based on Eclipse Xpand 2.2.0).</description>
+	<artifactId>xtend</artifactId>
+	<name>JEAF Xpand - Xtend</name>
+	<description>Expression language, Xtend and Check (based on Eclipse Xtend 2.2.0).</description>
 
 	<dependencies>
 		<dependency>
-			<groupId>com.anaptecs.jeaf.xpand</groupId>
-			<artifactId>org-eclipse-xtend</artifactId>
+			<groupId>org.eclipse.emf</groupId>
+			<artifactId>org.eclipse.emf.mwe.core</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.emf</groupId>
-			<artifactId>org.eclipse.emf.mwe.core</artifactId>
+			<artifactId>org.eclipse.emf.mwe2.runtime</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.antlr</groupId>
@@ -35,17 +35,11 @@
 		</dependency>
 		<dependency>
 			<groupId>com.anaptecs.jeaf.owalibs</groupId>
-			<artifactId>org.eclipse.jdt.core</artifactId>
-			<optional>true</optional>
+			<artifactId>org.eclipse.emf.ecore</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.anaptecs.jeaf.owalibs</groupId>
-			<artifactId>org.eclipse.jface.text</artifactId>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>com.anaptecs.jeaf.owalibs</groupId>
-			<artifactId>org.eclipse.text</artifactId>
+			<groupId>com.ibm.icu</groupId>
+			<artifactId>icu4j</artifactId>
 			<optional>true</optional>
 		</dependency>
 	</dependencies>

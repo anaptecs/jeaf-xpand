@@ -8,11 +8,11 @@ The code is based on [Eclipse M2T Xpand](https://projects.eclipse.org/projects/m
 
 | Artifact (`com.anaptecs.jeaf.xpand`) | Content |
 | ------------------------------------ | ------- |
-| `org-eclipse-xtend`                  | Expression language, Xtend and Check |
-| `org-eclipse-xpand`                  | Template language Xpand |
-| `org-eclipse-xtend-typesystem-emf`   | EMF type system |
-| `org-eclipse-xtend-typesystem-uml2`  | UML2 type system incl. UML profiles |
-| `org-eclipse-xtend-util-stdlib`      | Standard library (e.g. `org::eclipse::xtend::util::stdlib::io`) |
+| `xtend`                  | Expression language, Xtend and Check |
+| `xpand`                  | Template language Xpand |
+| `xtend-typesystem-emf`   | EMF type system |
+| `xtend-typesystem-uml2`  | UML2 type system incl. UML profiles |
+| `xtend-util-stdlib`      | Standard library (e.g. `org::eclipse::xtend::util::stdlib::io`) |
 
 Package names are the ones of Eclipse Xpand, so existing templates, extensions and checks work without changes.
 
