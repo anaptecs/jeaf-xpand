@@ -9,3 +9,8 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
+    # Versions are fixed to the ones Eclipse Xpand 2.2.0 was built for. Newer versions are not compatible.
+    ignore:
+      - dependency-name: "org.eclipse.emf:org.eclipse.emf.mwe*"
+      - dependency-name: "org.antlr:antlr-runtime"
+      - dependency-name: "com.anaptecs.jeaf.owalibs:*"
