@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- Parent POM contains all general settings for building and releasing of all JEAF projects. -->
+	<parent>
+		<groupId>com.anaptecs.jeaf</groupId>
+		<artifactId>jeaf-project-parent</artifactId>
+		<version>2.2.0</version>
+	</parent>
+
+	<groupId>com.anaptecs.jeaf.xpand</groupId>
+	<artifactId>jeaf-xpand-project</artifactId>
+	<version>3.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>JEAF Xpand Project</name>
+	<description>Eclipse Xpand / Xtend runtime as used by JEAF Generator. Based on Eclipse M2T Xpand 2.2.0, built with Maven.</description>
+	<url>https://github.com/anaptecs/jeaf-xpand</url>
+
+	<!-- Code is based on Eclipse Xpand and therefore licensed under Eclipse Public License 1.0. -->
+	<licenses>
+		<license>
+			<name>Eclipse Public License - v 1.0</name>
+			<url>https://www.eclipse.org/legal/epl-v10.html</url>
+		</license>
+	</licenses>
+
+	<scm>
+		<connection>scm:git:https://github.com/anaptecs/jeaf-xpand.git</connection>
+		<developerConnection>scm:git:https://github.com/anaptecs/jeaf-xpand.git</developerConnection>
+		<url>https://github.com/anaptecs/jeaf-xpand</url>
+		<tag>HEAD</tag>
+	</scm>
+
+	<!-- Snapshots are deployed to GitHub Packages of this repository (not the one of the parent POM). -->
+	<distributionManagement>
+		<snapshotRepository>
+			<id>github</id>
+			<url>https://maven.pkg.github.com/anaptecs/jeaf-xpand</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<modules>
+		<module>xtend</module>
+		<module>xpand</module>
+		<module>xtend-typesystem-emf</module>
+		<module>xtend-typesystem-uml2</module>
+		<module>xtend-util-stdlib</module>
+	</modules>
+
+	<properties>
+		<!-- Eclipse libraries (EMF, UML2, ...) as redistributed with openArchitectureWare 4.3.1 -->
+		<eclipse.libs.version>4.3.1</eclipse.libs.version>
+		<mwe.version>1.3.20.201605261059</mwe.version>
+		<mwe2.version>2.9.0.201605261059</mwe2.version>
+		<antlr.version>3.2</antlr.version>
+		<commons-logging.version>1.2</commons-logging.version>
+		<icu4j.version>79.1</icu4j.version>
+
+		<!-- Javadoc of the original Eclipse code doesn't pass doclint. -->
+		<doclint>none</doclint>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.anaptecs.jeaf.xpand</groupId>
+				<artifactId>xtend</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.anaptecs.jeaf.xpand</groupId>
+				<artifactId>xpand</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.anaptecs.jeaf.xpand</groupId>
+				<artifactId>xtend-typesystem-emf</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<!-- MWE and its runtime are used without their transitive dependencies (newer EMF versions). -->
+			<dependency>
+				<groupId>org.eclipse.emf</groupId>
+				<artifactId>org.eclipse.emf.mwe.core</artifactId>
+				<version>${mwe.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>*</groupId>
+						<artifactId>*</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.emf</groupId>
+				<artifactId>org.eclipse.emf.mwe.utils</artifactId>
+				<version>${mwe.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>*</groupId>
+						<artifactId>*</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.emf</groupId>
+				<artifactId>org.eclipse.emf.mwe2.runtime</artifactId>
+				<version>${mwe2.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>*</groupId>
+						<artifactId>*</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>org.antlr</groupId>
+				<artifactId>antlr-runtime</artifactId>
+				<version>${antlr.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>*</groupId>
+						<artifactId>*</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>commons-logging</groupId>
+				<artifactId>commons-logging</artifactId>
+				<version>${commons-logging.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.ibm.icu</groupId>
+				<artifactId>icu4j</artifactId>
+				<version>${icu4j.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.anaptecs.jeaf.owalibs</groupId>
+				<artifactId>org.eclipse.emf.common</artifactId>
+				<version>${eclipse.libs.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.anaptecs.jeaf.owalibs</groupId>
+				<artifactId>org.eclipse.emf.ecore</artifactId>
+				<version>${eclipse.libs.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.anaptecs.jeaf.owalibs</groupId>
+				<artifactId>org.eclipse.emf.ecore.xmi</artifactId>
+				<version>${eclipse.libs.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.anaptecs.jeaf.owalibs</groupId>
+				<artifactId>org.eclipse.emf.mapping.ecore2xml</artifactId>
+				<version>${eclipse.libs.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.anaptecs.jeaf.owalibs</groupId>
+				<artifactId>org.eclipse.uml2.common</artifactId>
+				<version>${eclipse.libs.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.anaptecs.jeaf.owalibs</groupId>
+				<artifactId>org.eclipse.uml2.uml</artifactId>
+				<version>${eclipse.libs.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.anaptecs.jeaf.owalibs</groupId>
+				<artifactId>org.eclipse.uml2.uml.resources</artifactId>
+				<version>${eclipse.libs.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.anaptecs.jeaf.owalibs</groupId>
+				<artifactId>org.eclipse.core.runtime</artifactId>
+				<version>${eclipse.libs.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.anaptecs.jeaf.owalibs</groupId>
+				<artifactId>org.eclipse.equinox.common</artifactId>
+				<version>${eclipse.libs.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.anaptecs.jeaf.owalibs</groupId>
+				<artifactId>org.eclipse.equinox.registry</artifactId>
+				<version>${eclipse.libs.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.anaptecs.jeaf.owalibs</groupId>
+				<artifactId>org.eclipse.jdt.core</artifactId>
+				<version>${eclipse.libs.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.anaptecs.jeaf.owalibs</groupId>
+				<artifactId>org.eclipse.jface.text</artifactId>
+				<version>${eclipse.libs.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.anaptecs.jeaf.owalibs</groupId>
+				<artifactId>org.eclipse.text</artifactId>
+				<version>${eclipse.libs.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+</project>
