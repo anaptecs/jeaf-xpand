@@ -55,7 +55,7 @@
 		<emf.ecore.xmi.version>2.41.0</emf.ecore.xmi.version>
 		<emf.ecore2xml.version>2.14.0</emf.ecore2xml.version>
 		<!-- UML2 (not available on Maven Central, built by jeaf-uml2libs) -->
-		<uml2libs.version>5.6.1-SNAPSHOT</uml2libs.version>
+		<uml2libs.version>5.6.1</uml2libs.version>
 		<!-- Eclipse platform, only needed for optional features -->
 		<eclipse.core.runtime.version>3.34.0</eclipse.core.runtime.version>
 		<eclipse.equinox.registry.version>3.12.500</eclipse.equinox.registry.version>
