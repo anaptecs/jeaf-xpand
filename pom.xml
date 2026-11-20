@@ -54,7 +54,7 @@
 		<mwe.version>1.3.20.201605261059</mwe.version>
 		<mwe2.version>2.9.0.201605261059</mwe2.version>
 		<antlr.version>3.2</antlr.version>
-		<commons-logging.version>1.2</commons-logging.version>
+		<commons-logging.version>1.4.0</commons-logging.version>
 
 		<!-- Test model and plugin to unpack it -->
 		<jeaf-uml-test-model.version>2.13.1</jeaf-uml-test-model.version>
