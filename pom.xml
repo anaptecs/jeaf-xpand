@@ -11,7 +11,7 @@
 
 	<groupId>com.anaptecs.jeaf.xpand</groupId>
 	<artifactId>jeaf-xpand-project</artifactId>
-	<version>3.0.0-SNAPSHOT</version>
+	<version>3.0.0</version>
 	<packaging>pom</packaging>
 	<name>JEAF Xpand Project</name>
 	<description>Eclipse Xpand / Xtend runtime as used by JEAF Generator. Based on Eclipse M2T Xpand 2.2.0, built with Maven.</description>
@@ -29,7 +29,7 @@
 		<connection>scm:git:https://github.com/anaptecs/jeaf-xpand.git</connection>
 		<developerConnection>scm:git:https://github.com/anaptecs/jeaf-xpand.git</developerConnection>
 		<url>https://github.com/anaptecs/jeaf-xpand</url>
-		<tag>HEAD</tag>
+		<tag>v3.0.0</tag>
 	</scm>
 
 	<!-- Snapshots are deployed to GitHub Packages of this repository (not the one of the parent POM). -->
