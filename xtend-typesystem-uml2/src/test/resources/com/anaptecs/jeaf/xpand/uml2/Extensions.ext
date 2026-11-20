@@ -1,0 +1,5 @@
+String fullName(uml::NamedElement this) :
+    qualifiedName;
+
+List[String] attributeNames(JMM::POJO this) :
+    ownedAttribute.name;

@@ -1,0 +1,26 @@
+Integer factorial(Integer n) :
+    n <= 1 ? 1 : n * factorial(n - 1);
+
+cached String greet(String name) :
+    "Hello " + name;
+
+String describe(Object o) :
+    "object";
+
+String describe(String s) :
+    "string " + s;
+
+String describe(Integer i) :
+    "integer " + i;
+
+create List[String] newList(String first) :
+    this.add(first);
+
+String upper(String s) :
+    JAVA com.anaptecs.jeaf.xpand.xtend.JavaFunctions.upper(java.lang.String);
+
+String prefixed(String s) :
+    JAVA com.anaptecs.jeaf.xpand.xtend.JavaFunctions.prefixed(java.lang.String);
+
+String fail(String message) :
+    JAVA com.anaptecs.jeaf.xpand.xtend.JavaFunctions.fail(java.lang.String);

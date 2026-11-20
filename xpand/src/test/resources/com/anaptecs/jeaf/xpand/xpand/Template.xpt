@@ -1,0 +1,10 @@
+«DEFINE Root FOR List-»
+«FILE "result.txt"-»
+«FOREACH this AS name ITERATOR it SEPARATOR ", "»«it.counter1»/«it.elements»:«name»«IF it.lastIteration» (last)«ENDIF»«ENDFOREACH»
+«EXPAND Line FOREACH this-»
+«ENDFILE-»
+«ENDDEFINE»
+
+«DEFINE Line FOR String-»
+- «this.toUpperCase()»
+«ENDDEFINE»
